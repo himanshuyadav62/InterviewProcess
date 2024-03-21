@@ -21,10 +21,11 @@ public class Resume {
     @GeneratedValue
     private Integer resumeId; 
 
+    private String resumeName; 
     @Lob
     private byte[] data;
 
-    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)
+    @OneToOne
     private Candidate candidate; 
 
     @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)

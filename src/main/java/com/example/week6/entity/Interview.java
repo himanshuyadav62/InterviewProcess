@@ -2,6 +2,7 @@ package com.example.week6.entity;
 
 import jakarta.persistence.OneToOne;
 
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,9 @@ public class Interview {
     @Id
     @GeneratedValue
     private Integer interviewId;
+
+    private Boolean isSheduled; 
+    private LocalDateTime dateTime; 
 
     @OneToOne
     private Resume resume; 

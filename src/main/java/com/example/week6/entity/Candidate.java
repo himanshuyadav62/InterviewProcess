@@ -22,7 +22,7 @@ public class Candidate {
     private Integer id; 
     private String name; 
 
-    @OneToOne
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
     private Resume resume; 
 
     @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)

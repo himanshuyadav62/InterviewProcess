@@ -4,6 +4,10 @@ import jakarta.persistence.OneToOne;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,12 +26,20 @@ public class Interview {
     @GeneratedValue
     private Integer interviewId;
 
-    private Boolean isSheduled; 
-    private LocalDateTime dateTime; 
+
+    
+    private String interviewStatus ;
+    
+
+    private LocalDateTime interviewDateTime; 
+
+    
 
     @OneToOne
-    private Resume resume; 
-
-    @OneToOne
+    @JsonBackReference
     private Candidate candidate; 
+
+    @OneToOne(mappedBy = "interview", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Result result; 
 }

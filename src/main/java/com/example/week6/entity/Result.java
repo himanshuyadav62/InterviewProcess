@@ -1,8 +1,7 @@
 package com.example.week6.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -15,20 +14,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder 
 @Entity
-public class Candidate {
-
+public class Result {
     @Id
     @GeneratedValue
-    private Integer id; 
-    private String name; 
+    private Integer resultId;
+    
+    private String results; 
 
-    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToOne
+    @JsonBackReference
+    private Interview interview;
+
+    @OneToOne
+    @JsonBackReference
     private Resume resume; 
 
-    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Interview interview;
 }
